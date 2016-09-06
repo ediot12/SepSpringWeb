@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    
+
+    testCompile 'junit:junit:4.12'
+    
+    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+	compile group: 'org.springframework', name: 'spring-webmvc', version: '4.2.7.RELEASE'
+    
+    
+    
+}
