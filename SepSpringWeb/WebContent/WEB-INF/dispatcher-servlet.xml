@@ -15,6 +15,13 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<bean id="newArticleController" class="web.controller.NewArticleController"
+		p:articleService-ref="articleService" />
 
+	<bean id="articleService" class="spring.service.ArticleService" />
+	
+	
+
+	<bean class="web.controller.OrderController"/>
 
 </beans>
