@@ -19,9 +19,52 @@
 		p:articleService-ref="articleService" />
 
 	<bean id="articleService" class="spring.service.ArticleService" />
-	
-	
 
-	<bean class="web.controller.OrderController"/>
 
+
+	<bean class="web.controller.OrderController" />
+
+	<bean id="searchController" class="web.controller.SearchController" />
+
+	<bean id="cookieController" class="web.controller.CookieController" />
+
+	<bean class="web.controller.HeaderController" />
+
+	<bean class="web.controller.GameSearchController"
+		p:searchService-ref="searchService" />
+	<bean id="searchService" class="spring.service.SearchService" />
+
+
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="alwaysUseFullPath" value="true" />
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="alwaysUseFullPath" value="true" />
+	</bean>
+
+	<bean class="web.controller.CreateAccountController" />
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages.validation</value>
+			</list>
+		</property>
+
+	</bean>
+	
+	<bean class="web.controller.GameInfoController" />
+	
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="alwaysUseFullPath" value="true" />
+	</bean>
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="alwaysUseFullPath" value="true" />		
+	</bean>
+	
+	<bean class="web.controller.CharacterInfoController" />
+	
 </beans>
