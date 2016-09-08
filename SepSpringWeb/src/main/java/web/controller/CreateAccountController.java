@@ -18,7 +18,7 @@ public class CreateAccountController {
 	
 	@ModelAttribute("command")
 	public MemberInfo formBacking(HttpServletRequest request){
-		if(request.getMethod().equalsIgnoreCase("GET")){
+		if(request.getMethod().equalsIgnoreCase("GET")){//equalsIgnoreCase 대소문자 무시함
 			MemberInfo mi = new MemberInfo();
 			Address address = new Address();
 			address.setZipcode(autoDetectZipcode(request.getRemoteAddr()));
@@ -40,11 +40,11 @@ public class CreateAccountController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String submit(@ModelAttribute("command") MemberInfo memberInfo,BindingResult result){
+	public String submit(@ModelAttribute("command") MemberInfo memberInfo,BindingResult result){//command라는 이름이 같은데 위에 ModelAttribute에서 만들어둔 객체를 memberInfo에 주입을 시키는거다.
 		new MemberInfoValidator().validate(memberInfo, result);
 		if (result.hasErrors()) {
 			return "account/creationForm";
-		}
+		}//멀쩡히 입력잘하면 에러를 추가할일이 없어서 그냥 바로 아래 return이 되는거임
 		return "account/created";
 	}
 
