@@ -27,6 +27,6 @@
 	<a href="login/login.do">/login/login.do</a>
 	<br>
 	<a href="report/submission.do">/report/submission.do</a>
-	
+	<br>
 </body>
 </html>

@@ -3,6 +3,16 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <html>
 <head>
+<script>
+function check(){
+	if(document.second.report.value==""){
+		alert('파일 업로드 안함')
+		return false;
+	}
+	
+}
+
+</script>
 <title>리포트 제출</title>
 </head>
 <body>
@@ -14,8 +24,8 @@
 	</form>
 
 	<h3>MultipartHttpServletRequest 사용</h3>
-	<form action="submitReport2.do" method="post"
-		enctype="multipart/form-data">
+	<form name="second" action="submitReport2.do" method="post"
+		enctype="multipart/form-data" onsubmit="return check()">
 		학번: <input type="text" name="studentNumber" /> <br /> 리포트파일: <input
 			type="file" name="report" /> <br /> <input type="submit" />
 	</form>

@@ -1,11 +1,18 @@
 package web.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import spring.dao.FileDAO;
 
 @Controller
 public class ReportSubmissionController {
@@ -14,7 +21,7 @@ public class ReportSubmissionController {
 	public String form() {
 		return "report/submissionForm";
 	}
-	
+
 	@RequestMapping(value = "/report/submitReport1.do", method = RequestMethod.POST)
 	public String submitReport1(@RequestParam("studentNumber") String studentNumber,
 			@RequestParam("report") MultipartFile report) {
@@ -27,9 +34,10 @@ public class ReportSubmissionController {
 	}
 
 	@RequestMapping(value = "/report/submitReport2.do", method = RequestMethod.POST)
-	public String submitReport2(MultipartHttpServletRequest request) {
+	public String submitReport2(MultipartHttpServletRequest request) throws IOException {
 		String studentNumber = request.getParameter("studentNumber");
 		MultipartFile report = request.getFile("report");
+		upload(report, report.getOriginalFilename());
 		printInfo(studentNumber, report);
 		return "report/submissionComplete";
 	}
@@ -38,6 +46,23 @@ public class ReportSubmissionController {
 	public String submitReport3(ReportCommand reportCommand) {
 		printInfo(reportCommand.getStudentNumber(), reportCommand.getReport());
 		return "report/submissionComplete";
+	}
+
+	public void upload(MultipartFile file, String fileName) throws IOException {
+		FileOutputStream fos = null;
+		String path = "e:\\upload";
+		byte fileData[] = file.getBytes();
+		String realPath = path + "\\" + fileName + "_" + System.currentTimeMillis();
+		fos = new FileOutputStream(path + "\\" + fileName + "_" + System.currentTimeMillis());
+		fos.write(fileData);
+		fos.close();
+
+		if (file.getOriginalFilename() != "") {
+			System.out.println("¤¾¤·");
+			ApplicationContext context = new GenericXmlApplicationContext("dao.xml");
+			FileDAO dao = context.getBean("dao", FileDAO.class);
+			dao.InsertDB(file.getOriginalFilename(), realPath, file.getSize());
+		}
 	}
 
 }
