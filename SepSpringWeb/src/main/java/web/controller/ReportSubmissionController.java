@@ -32,6 +32,7 @@ public class ReportSubmissionController {
 	private void printInfo(String studentNumber, MultipartFile report) {
 		System.out.println(studentNumber + "가 업로드 한 파일 : " + report.getOriginalFilename());
 	}
+	
 
 	@RequestMapping(value = "/report/submitReport2.do", method = RequestMethod.POST)
 	public String submitReport2(MultipartHttpServletRequest request) throws IOException {

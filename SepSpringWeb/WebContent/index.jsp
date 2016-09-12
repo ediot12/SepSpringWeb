@@ -28,5 +28,12 @@
 	<br>
 	<a href="report/submission.do">/report/submission.do</a>
 	<br>
+	<a href="log/query.do">/log/query.do</a>
+	<br>
+	<a href="event/list.do">/event/list.do</a>
+	<br>
+	<a href="test/simpleTest.do">test/simpleTest.do</a>
+	<br>
+	<a href="city/city.do">city/city.do</a>
 </body>
 </html>
