@@ -4,6 +4,7 @@
 <%
     String cp = request.getContextPath();
 request.setCharacterEncoding("UTF-8");
+System.out.println(cp);
 %>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@ request.setCharacterEncoding("UTF-8");
 <script>
 $(function(){
 	// 시도테이블의 리스트 가져오기
-	var url="<%=cp%>/city/sidoList.do";
+	var url = "<%=cp%>/city/sidoList.do";
 	var params="dumi="+new Date();
 	
 	$.ajax({

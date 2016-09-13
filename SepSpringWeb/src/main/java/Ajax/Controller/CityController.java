@@ -12,14 +12,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class CityController {
+	
 	@Autowired
 	private CityService service;
-
+	
 	public void setService(CityService service) {
 		this.service = service;
+		
 	}
 
 	@RequestMapping(value = "/city/city.do")
@@ -35,19 +38,19 @@ public class CityController {
 
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out = resp.getWriter();
-		out.print(jso.toString()); // out.print 내용을 ajax의 dataType이 jason에게
-									// 데이터 쏴줌
+		out.print(jso.toString()); // out.print 내용을 ajax의 dataType이 jason에게 데이터 쏴줌
 	}
 
-	@RequestMapping(value = "/city/cityList.do", method = RequestMethod.POST)
-	public void cityList(HttpServletResponse resp, @RequestParam("snum") String city) throws Exception {
+	@RequestMapping(value = "/city/cityList.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@ResponseBody
+	public String cityList(HttpServletResponse resp, @RequestParam("snum")String city) throws Exception {
+		resp.setContentType("text/html; charset=UTF-8");
 		List<String> list = service.listCity(city);
-
 		JSONObject jso = new JSONObject();
 		jso.put("data1", list);
-
-		resp.setContentType("text/html;charset=utf-8");
-		PrintWriter out = resp.getWriter();
-		out.print(jso.toString());
+		return jso.toString();
+		
 	}
+	
 }
+
