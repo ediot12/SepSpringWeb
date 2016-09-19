@@ -5,24 +5,16 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-<!-- 
-
-	<context:component-scan base-package="spring.controller" />
-	 -->
+	<!-- <context:component-scan base-package="spring.controller" /> -->
 	<bean id="viewResolver"
-			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			<property name="prefix" value="/WEB-INF/viewjsp/" />
-			<property name="suffix" value=".jsp" />
-		</bean>
-<!-- 
-	<bean id="viewResolver1"
-		class="org.springframework.web.srvlet.view.BeanNameViewResolver" />
-
-	<bean id="viewResolver2"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/viewjsp/" />
 		<property name="suffix" value=".jsp" />
-	</bean> -->
+	</bean>
+	<!-- <bean id="viewResolver1" class="org.springframework.web.srvlet.view.BeanNameViewResolver" 
+		/> <bean id="viewResolver2" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/viewjsp/" /> <property name="suffix" 
+		value=".jsp" /> </bean> -->
 
 	<bean class="spring.controller.LoginController">
 		<property name="authenticator">
@@ -37,6 +29,31 @@
 			<list>
 				<value>messages.validation</value>
 				<value>messages.label</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="spring.controller.RegistMemberController" />
+
+	<bean class="spring.controller.LocaleChangeController">
+		<property name="localeResolver" ref="localeResolver" />
+	</bean>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+
+	<bean class="spring.controller.LocaleChangeController2" />
+
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
+		p:paramName="language" />
+
+
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor" />
 			</list>
 		</property>
 	</bean>
