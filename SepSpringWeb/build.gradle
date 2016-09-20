@@ -45,5 +45,23 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
 	compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
 	
+	// https://mvnrepository.com/artifact/org.apache.tiles/tiles-jsp
+	compile group: 'org.apache.tiles', name: 'tiles-jsp', version: '3.0.7'
+	
+	// https://mvnrepository.com/artifact/org.apache.poi/poi
+	compile group: 'org.apache.poi', name: 'poi', version: '3.13'
+	
+	// https://mvnrepository.com/artifact/com.lowagie/itext
+	compile group: 'com.lowagie', name: 'itext', version: '2.1.7'
+	
+	// https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
+	compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.2.12'
+	
+	// https://mvnrepository.com/artifact/org.springframework/spring-oxm
+	compile group: 'org.springframework', name: 'spring-oxm', version: '4.2.7.RELEASE'
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.8.3'
+	
+	
     
 }

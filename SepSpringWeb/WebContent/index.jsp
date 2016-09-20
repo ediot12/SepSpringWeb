@@ -6,7 +6,8 @@
 <body>
 	<a href="hello.do">/hello.do</a>
 	<br>
-	<a href="article/newArticle.do">/article/newArticle.do</a>
+	<a href="article/
+	newArticle.do">/article/newArticle.do</a>
 	<br>
 	<a href="order/order.do">/order/order.do</a>
 	<br>
@@ -35,5 +36,8 @@
 	<a href="test/simpleTest.do">test/simpleTest.do</a>
 	<br>
 	<a href="city/city.do">city/city.do</a>
+	<br>
+	<a href="tiles/login/login.do">/tiles/login/login.do</a>
+	<br>
 </body>
 </html>
